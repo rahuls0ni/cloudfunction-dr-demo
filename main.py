@@ -21,18 +21,14 @@ def hello_pubsub(event, context):
     websnap= ''
     while request is not None:
          response = request.execute()
-         # pprint(response)
          temp= []
 
          for snapshot in response['items']:
-              # TODO: Change code below to process each `snapshot` resource:
-              #pprint(snapshot)
+              #Change code below to process each `snapshot` resource:
               json_str = json.dumps(snapshot)
               resp = json.loads(json_str)    
               temp.append(resp['name'])
-          # pprint(temp[0]) 
          snapname= temp 
-          # pprint (snapname)
          f=[]
          webCount=0
          for i in temp:
@@ -41,7 +37,6 @@ def hello_pubsub(event, context):
                 if webCount==0:
                     f.append(i)
                     webCount+=1
-                    # pprint(f)
                     websnap= f[0]
                     pprint('web:')
                     pprint(websnap)           
